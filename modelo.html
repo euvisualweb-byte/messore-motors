@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo | MESSORE MOTORS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Filtro que vuelve transparente el fondo negro del logo -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <filter id="logo-knockout" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="1 0 0 0 0
+                                                 0 1 0 0 0
+                                                 0 0 1 0 0
+                                                 1.3 1.3 1.3 0 -0.3"/>
+        </filter>
+    </svg>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="navbar__menu" id="navMenu" aria-label="Principal">
+                <a href="index.html#modelos" class="navbar__link">Modelos</a>
+                <a href="index.html#comprar" class="navbar__link">Comprar</a>
+            </nav>
+
+            <a href="index.html" class="navbar__logo" aria-label="Messore Motors - Inicio">
+                <img src="img/logo-messore-motors.PNG" alt="Messore Motors">
+            </a>
+
+            <form class="navbar__search" id="dealerSearch" role="search">
+                <label for="dealerQuery" class="visually-hidden">Buscar concesionario más cercano</label>
+                <svg class="navbar__search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                <input id="dealerQuery" type="search" placeholder="Buscar concesionario más cercano" autocomplete="off">
+            </form>
+
+            <button class="navbar__search-btn" id="dealerSearchBtn" type="button" aria-label="Buscar concesionario más cercano">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="modelPage">
+        <!-- ===== HERO DEL MODELO ===== -->
+        <section class="model-hero" id="mHero" aria-roledescription="carrusel" aria-label="Modelos">
+            <h1 class="visually-hidden" id="mPageTitle"></h1>
+
+            <a href="index.html#modelos" class="model-hero__back">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
+                Todos los modelos
+            </a>
+
+            <!-- Las slides se generan desde js/modelos-data.js -->
+            <div class="model-hero__slides" id="mSlides"></div>
+
+            <button class="hero__arrow hero__arrow--prev" id="mPrev" aria-label="Modelo anterior">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
+            </button>
+            <button class="hero__arrow hero__arrow--next" id="mNext" aria-label="Modelo siguiente">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
+            </button>
+
+            <nav class="model-hero__tabs" id="mTabs" aria-label="Elegir modelo"></nav>
+        </section>
+
+        <div class="model-details" id="mDetails">
+
+        <!-- ===== CIFRAS DESTACADAS ===== -->
+        <section class="model-stats" id="mStats" hidden></section>
+
+        <!-- ===== DESCRIPCIÓN ===== -->
+        <section class="model-section model-intro" id="mIntro" hidden>
+            <h2 class="model-section__title" id="mIntroTitle"></h2>
+            <div class="model-intro__text" id="mDescription"></div>
+        </section>
+
+        <!-- ===== VENTAJAS ===== -->
+        <section class="model-section" id="mFeatures" hidden>
+            <h2 class="model-section__title" id="mFeaturesTitle">¿Por qué elegir este modelo?</h2>
+            <div class="model-features" id="mFeaturesList"></div>
+        </section>
+
+        <!-- ===== FICHA TÉCNICA ===== -->
+        <section class="model-section" id="mSpecs" hidden>
+            <h2 class="model-section__title">Ficha técnica</h2>
+            <dl class="model-specs" id="mSpecsList"></dl>
+        </section>
+
+        <!-- ===== GALERÍA ===== -->
+        <section class="model-section" id="mGallery" hidden>
+            <h2 class="model-section__title">Galería</h2>
+            <div class="model-gallery" id="mGalleryGrid"></div>
+        </section>
+
+        <!-- ===== AVISO SIN INFO ===== -->
+        <section class="model-section model-soon" id="mSoon" hidden>
+            <p>Estamos preparando la información completa de este modelo. Mientras tanto, consultanos para conocer precios, versiones y disponibilidad.</p>
+        </section>
+        </div>
+
+        <!-- ===== CTA ===== -->
+        <section class="model-cta" id="consultar">
+            <h2 class="model-cta__title" id="mCtaTitle">¿Te interesa este modelo?</h2>
+            <p class="model-cta__text">Nuestro equipo te asesora sobre versiones, financiación y disponibilidad.</p>
+            <a href="index.html#comprar" class="btn btn--light">Contactar a un asesor</a>
+        </section>
+    </main>
+
+    <!-- ===== MODELO NO ENCONTRADO ===== -->
+    <section class="model-notfound" id="notFound" hidden>
+        <h1>Modelo no encontrado</h1>
+        <p>El modelo que buscás no existe o ya no está disponible.</p>
+        <a href="index.html#modelos" class="btn btn--light">Ver modelos</a>
+    </section>
+
+    <script src="js/modelos-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modelo.js"></script>
+</body>
+</html>
